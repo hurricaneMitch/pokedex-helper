@@ -88,7 +88,7 @@ export default function CollectionBrowser({ initialCollection }: Props) {
           .select()
           .single();
         if (data) {
-          setCollection((prev) => ({ ...prev, [pokemon.id]: data }));
+          setCollection((prev) => ({ ...prev, [pokemon.id]: data as CollectionRow }));
         }
       }
     });
