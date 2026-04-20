@@ -10,12 +10,13 @@ export default async function CollectionPage() {
 
   if (!user) redirect("/auth/signin");
 
-  const { data: collection } = await supabase
+  const { data } = await supabase
     .from("user_collection")
     .select("*");
+  const collection = (data ?? []) as CollectionRow[];
 
   const collectionMap: Record<number, CollectionRow> = {};
-  for (const row of collection ?? []) {
+  for (const row of collection) {
     collectionMap[row.pokemon_id] = row;
   }
 
